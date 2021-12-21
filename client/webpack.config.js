@@ -88,7 +88,6 @@ const config = {
     minimizer: [
       new TerserPlugin(),
       new CssMinimizerPlugin(),
-      // new OptimizeCSSAssetsPlugin({}), // css
     ],
   },
 };
