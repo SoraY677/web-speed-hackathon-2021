@@ -100,7 +100,7 @@ const config = {
     splitChunks: {
       cacheGroups: {
         styles: {
-          name: 'styles',
+          name: 'main',
           test: /\.css$/,
           chunks: 'all',
           enforce: true
