@@ -1,10 +1,12 @@
 const path = require('path');
+const glob = require('glob');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const TerserPlugin = require("terser-webpack-plugin");
+const PurgeCSSPlugin = require('purgecss-webpack-plugin');
 const webpack = require('webpack');
 
 const SRC_PATH = path.resolve(__dirname, './src');
@@ -77,7 +79,10 @@ const config = {
       template: path.resolve(SRC_PATH, './index.html'),
     }),
     // 不要なJSファイルを削除
-    new UglifyJSPlugin()
+    new UglifyJSPlugin(),
+    new PurgeCSSPlugin({
+      paths: glob.sync(`./src/**/*`,  { nodir: true }),
+    }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -92,6 +97,16 @@ const config = {
       new TerserPlugin(),
       new CssMinimizerPlugin(),
     ],
+    splitChunks: {
+      cacheGroups: {
+        styles: {
+          name: 'styles',
+          test: /\.css$/,
+          chunks: 'all',
+          enforce: true
+        }
+      }
+    }
   },
 };
 
