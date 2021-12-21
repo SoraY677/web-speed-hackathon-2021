@@ -80,9 +80,9 @@ const config = {
     }),
     // 不要なJS/CSSを削除
     new UglifyJSPlugin(),
-    new PurgeCSSPlugin({
-      paths: glob.sync(`./src/**/*`,  { nodir: true }),
-    }),
+    // new PurgeCSSPlugin({
+    //   paths: glob.sync(`./src/**/*`,  { nodir: true }),
+    // }),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -97,16 +97,16 @@ const config = {
       new TerserPlugin(),
       new CssMinimizerPlugin(),
     ],
-    splitChunks: {
-      cacheGroups: {
-        styles: {
-          name: 'main',
-          test: /\.css$/,
-          chunks: 'all',
-          enforce: true
-        }
-      }
-    }
+    // splitChunks: {
+    //   cacheGroups: {
+    //     styles: {
+    //       name: 'main',
+    //       test: /\.css$/,
+    //       chunks: 'all',
+    //       enforce: true
+    //     }
+    //   }
+    // }
   },
 };
 
