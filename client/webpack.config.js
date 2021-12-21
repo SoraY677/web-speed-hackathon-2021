@@ -78,7 +78,7 @@ const config = {
       inject: false,
       template: path.resolve(SRC_PATH, './index.html'),
     }),
-    // 不要なJSファイルを削除
+    // 不要なJS/CSSを削除
     new UglifyJSPlugin(),
     new PurgeCSSPlugin({
       paths: glob.sync(`./src/**/*`,  { nodir: true }),
