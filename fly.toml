@@ -1,6 +1,6 @@
 # fly.toml file generated for damp-grass-1448 on 2021-12-22T16:26:07+09:00
 
-app = "damp-grass-1448"
+app = "web-speed-hackthon-2021-ys"
 
 kill_signal = "SIGINT"
 kill_timeout = 5
