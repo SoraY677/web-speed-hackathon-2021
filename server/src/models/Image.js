@@ -16,7 +16,7 @@ import { sequelize } from '../sequelize';
 const Image = sequelize.define('Image', {
   alt: {
     allowNull: false,
-    defaultValue: '',
+    defaultValue: 'Unknown',
     type: DataTypes.STRING,
   },
   id: {
